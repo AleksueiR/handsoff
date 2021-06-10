@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
-    <title>Content Management System</title>
-    <base href="{{ base }}">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Sarabun:400,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="static/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    <script src="static/index.js" defer></script>
-  </head>
-  <body>
-    <main>
-      <nav>
-        <input type="text" placeholder="Filter Tag List" class="filterInput"/>
-        <ul class="tagList">
-          {% for tag in tagList %}
-            <li class="tag" data-tag="{{ tag }}">
-              <a href="{{ tag }}">{{ tag }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-        <button class="buildButton">Build Site</button>
-      </nav>
-      <section class="contentEditor">
-        {% if content %}
-          <header>
-            <h1>{{ content.name }}</h1>
-            <ul class="pageList">
-              {% for page in content.pages %}
-                <li class="page">{{ page }}</li>
-              {% endfor %}
-            </ul>
-          </header>
-          <textarea class="editor">{{ content.value }}</textarea>
-        {% else %}
-          <div class="readme">{{ readme | safe }}</div>
-        {% endif %}
-      </section>
-    </main>
-  </body>
+    <head>
+        <title>Content Management System</title>
+        <base href="{{ base }}" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css?family=Sarabun:400,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="/static/index.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css" />
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+        <script src="/static/index.js" defer></script>
+    </head>
+    <body>
+        <main>
+            <nav>
+                <input type="text" placeholder="Filter Tag List" class="filterInput" />
+                <ul class="tagList">
+                    {% for tag in tagList %}
+                    <li class="tag" data-tag="{{ tag }}">
+                        <a href="{{ tag }}">{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <button class="buildButton">Build Site</button>
+            </nav>
+            <section class="contentEditor">
+                {% if content %}
+                <header>
+                    <h1>{{ content.name }}</h1>
+                    <ul class="pageList">
+                        {% for page in content.pages %}
+                        <li class="page">{{ page }}</li>
+                        {% endfor %}
+                    </ul>
+                </header>
+                <textarea class="editor">{{ content.value }}</textarea>
+                {% else %}
+                <div class="readme">{{ readme | safe }}</div>
+                {% endif %}
+            </section>
+        </main>
+    </body>
 </html>

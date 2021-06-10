@@ -9,19 +9,21 @@ import render from './middleware/render.js';
 const port = 9000;
 const app = new Koa();
 
-app.use(serve({
-  rootDir: resolve(__dirname, '..', 'client-src'),
-  rootPath: '/static',
-}));
+app.use(
+    serve({
+        rootDir: resolve(__dirname, '..', 'client-src'),
+        rootPath: '/static'
+    })
+);
 
 app.use((ctx, next) => {
-  ctx.state.base = '';
-  return next();
+    ctx.state.base = '';
+    return next();
 });
 
 app.use(bodyParser());
 app.use(router.routes());
-app.use(render);
+// app.use(render);
 
 app.listen(port);
 console.log(`Go to: http://localhost:${port}`);
